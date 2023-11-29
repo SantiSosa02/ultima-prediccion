@@ -4,10 +4,6 @@ from sklearn.feature_extraction import DictVectorizer
 from sklearn.naive_bayes import MultinomialNB
 import sys
 
-archivo_temporal = sys.argv[1]
-with open(archivo_temporal, 'r') as f:
-    contenido_archivo = f.read()
-    
 
 def realizar_prediccion(productos):
     # Convertir la lista de productos a un DataFrame de Pandas
