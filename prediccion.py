@@ -2,13 +2,12 @@ import json
 import pandas as pd
 from sklearn.feature_extraction import DictVectorizer
 from sklearn.naive_bayes import MultinomialNB
-import os
+import sys
 
-# Obtener la ruta del archivo desde la variable de entorno proporcionada por Render
-archivo_temporal = os.environ.get("ARCHIVO_TEMPORAL", "/mnt/data/tu_archivo.json")
-
+archivo_temporal = sys.argv[1]
 with open(archivo_temporal, 'r') as f:
     contenido_archivo = f.read()
+    
 
 def realizar_prediccion(productos):
     # Convertir la lista de productos a un DataFrame de Pandas
