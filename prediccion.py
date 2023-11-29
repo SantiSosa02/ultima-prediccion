@@ -4,9 +4,14 @@ from sklearn.feature_extraction import DictVectorizer
 from sklearn.naive_bayes import MultinomialNB
 import sys
 
-# Obtener la cadena JSON de la solicitud HTTP (POST)
 contenido_solicitud = sys.stdin.read()
-productos = json.loads(contenido_solicitud)
+print('Contenido de la solicitud:', contenido_solicitud)
+
+try:
+    productos = json.loads(contenido_solicitud)
+except json.JSONDecodeError as e:
+    print(f"Error al cargar JSON: {str(e)}")
+    sys.exit(1)
 
 def realizar_prediccion(productos):
     # Convertir la lista de productos a un DataFrame de Pandas
