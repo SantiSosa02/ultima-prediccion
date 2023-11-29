@@ -4,7 +4,17 @@ from sklearn.feature_extraction import DictVectorizer
 from sklearn.naive_bayes import MultinomialNB
 import sys
 
-contenido_archivo = sys.stdin.read()
+archivo_temporal = sys.argv[1]
+
+with open(archivo_temporal, 'r') as f:
+    contenido_archivo = f.read()
+
+try:
+    productos = json.loads(contenido_archivo)
+except json.JSONDecodeError as e:
+    print(f"Error al cargar JSON: {str(e)}")
+    sys.exit(1)
+
     
 def realizar_prediccion(productos):
     # Convertir la lista de productos a un DataFrame de Pandas
